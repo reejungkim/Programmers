@@ -33,4 +33,35 @@ def solution(scoville, K):
     
     
     
+    #응용: 쵀대힙
+    nums =[4,1,7,3,8,5]
+    heap =[]
+    for num in nums:
+        heappush(heap, (-num, num))  #<- 튜플을 넣어줌   
+    
+    from heapq import heappush, heappop 
+    while heap:
+        print(heappop(heap)) #<- 마이너스 맥스값, 맥스값이 출력
+        print(heappop(heap)[1]) #<- 맥스값 출력되도록함.
+        
+        
+        
+    #응용: n번째 최소값/ 최대값 
+    def nth_smallest(nums, n):
+        
+        heap=[]
+        for num in nums:
+            heappush(heap, num)
+            
+        nth_min = None
+        for _ in range(n):
+            nth_min = heappop(heap)
+        
+        return nth_min
+    
+    from heapq import nsmallest, nlargest
+    print(nsmallest(3, [4,1,7,3,8,5])[-1])
+    print(nlargest(1, [4,1,7,3,8,5])[-1])
+    
+    
     
